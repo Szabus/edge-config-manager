@@ -22,3 +22,5 @@ add_executable(ecm_tests tests/test_basic.cpp)
 target_link_libraries(ecm_tests PRIVATE Catch2::Catch2WithMain)
 
 add_test(NAME ecm_tests COMMAND ecm_tests)
+target_include_directories(ecm PRIVATE include)
+
