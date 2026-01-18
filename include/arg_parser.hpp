@@ -4,7 +4,8 @@
 #include <vector>
 #include "parse_result.hpp"
 
-class ArgumentParser {
+class ArgumentParser 
+{
 public:
     ParseResult parse(const std::vector<std::string>& args) const;
     static std::string usage();

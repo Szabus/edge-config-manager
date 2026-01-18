@@ -11,7 +11,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # =========================
 add_library(ecm_core
     src/arg_parser.cpp
-)
+    src/config_loader.cpp)
 
 target_include_directories(ecm_core
     PUBLIC
@@ -29,7 +29,7 @@ endif()
 # =========================
 add_executable(ecm
     src/main.cpp
-)
+    src/config_loader.cpp)
 
 target_link_libraries(ecm
     PRIVATE
@@ -55,7 +55,7 @@ FetchContent_MakeAvailable(Catch2)
 add_executable(ecm_tests
     tests/test_basic.cpp
     tests/test_arg_parser.cpp
-)
+    tests/test_config_loader.cpp)
 
 target_link_libraries(ecm_tests
     PRIVATE
