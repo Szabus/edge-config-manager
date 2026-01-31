@@ -1,7 +1,12 @@
-#include "arg_parser.hpp"
+#pragma once
+
 #include <iostream>
 #include <vector>
 #include <string>
+
+#include "arg_parser.hpp"
+#include "config_loader.hpp"
+
 
 
 static std::vector<std::string> to_args(int argc, char* argv[]) {
@@ -29,6 +34,18 @@ int main(int argc, char* argv[]) {
         return 0;
     }
 
-    std::cout << "Config file: " << *result.options.config_path << "\n";
+    ConfigLoader loader;
+    auto load_result = loader.load_text(*result.options.config_path);
+
+    if (!load_result.ok) {
+        std::cerr << "Error: " << load_result.error_message << "\n";
+        return 2;
+    }
+
+    std::cout << "Loaded config file: "
+        << result.options.config_path.value()
+        << " (" << load_result.content->size()
+        << " bytes)\n";
+
     return 0;
     }

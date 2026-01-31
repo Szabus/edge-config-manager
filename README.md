@@ -1,15 +1,16 @@
 # Edge Config Manager
 
-C++20-based edge/IoT configuration management tool.
+Small C++ CLI tool for loading and managing configuration files.
+Built as a learning project focusing on modern C++, clean architecture,
+and testable components.
 
-## Goal
-Validate and manage device configuration files (JSON/YAML) for edge devices,
-with future support for cloud (MQTT, TLS).
+## Features
+- Command-line argument parsing
+- Config file loading with error handling
+- Unit tests (Catch2)
+- CMake-based build
 
-## Roadmap
-- [ ] Project skeleton (CMake)
-- [ ] CLI interface
-- [ ] Config loading (JSON/YAML)
-- [ ] Validation
-- [ ] Unit tests
-- [ ] CI (GitHub Actions)
+## Build
+```bash
+cmake -S . -B build
+cmake --build build
