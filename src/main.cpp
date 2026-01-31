@@ -6,6 +6,7 @@
 
 #include "arg_parser.hpp"
 #include "config_loader.hpp"
+#include "config_parser.hpp"
 
 
 
@@ -41,7 +42,10 @@ int main(int argc, char* argv[]) {
         std::cerr << "Error: " << load_result.error_message << "\n";
         return 2;
     }
-
+    if (!is_valid_json(*load_result.content)) {
+        std::cerr << "Error: config file is not valid JSON\n";
+        return 2;
+    }
     std::cout << "Loaded config file: "
         << result.options.config_path.value()
         << " (" << load_result.content->size()
